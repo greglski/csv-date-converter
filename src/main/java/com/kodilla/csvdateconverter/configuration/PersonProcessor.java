@@ -11,7 +11,7 @@ public class PersonProcessor implements ItemProcessor<PersonWithBirthdate, Perso
 
     @Override
     public PersonWithAge process(PersonWithBirthdate item) {
-        int age = Period.between(LocalDate.now(), LocalDate.parse(item.getBirthdate())).getYears();
+        int age = Period.between(LocalDate.parse(item.getBirthdate()), LocalDate.now()).getYears();
         return new PersonWithAge(item.getId(), item.getName(), item.getFamilyName(), age);
     }
 }
